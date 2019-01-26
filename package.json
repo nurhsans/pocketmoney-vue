@@ -1,0 +1,21 @@
+{
+    "name": "Pocketmoney-vue",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "https://github.com/noobnur/pocketmoney-vue.git",
+    "author": "dayah",
+    "license": "",
+    "description": "pocketmoney vue",
+    "scripts": {
+        "start": "nodemon"
+    },
+    "dependencies": {
+        "nodemon": "^1.12.1"
+    },
+    "browser": {
+        "vue": "vue/dist/vue.common.js"
+    },
+    "alias": {
+        "vue" : "./node_modules/vue/dist/vue.common.js"
+    }
+}
