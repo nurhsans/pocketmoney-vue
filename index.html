@@ -16,9 +16,10 @@
                 <div id=cw>
                   <salaryinput @newsalary="salar = $event"></salaryinput>
         
-                  <budgetform type="Savings" placeholder=50 :salary="salar"></budgetform>
-                  <budgetform type="Expenses" placeholder=45 :salary="salar"></budgetform>
-                  <budgetform type="Wealth" placeholder=5 :salary="salar"></budgetform>
+                  <budgetform type="Savings" placeholder=50 :salary="salar" initvalue=50></budgetform>
+                  <budgetform type="Expenses" placeholder=45 :salary="salar" initvalue=45></budgetform>
+                  <budgetform type="Wealth" placeholder=5 :salary="salar" initvalue=5></budgetform>
+
                 </div>
 
             </div>
