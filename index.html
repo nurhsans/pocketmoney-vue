@@ -13,15 +13,12 @@
         <div id="calc">
             <h2>Calculator</h2>
             <div id="SalaryInput">
-                <form>
-                    <label><h5>Salary: $ </h5></label>
-                    <input type="text" name="name" placeholder="eg. 3000" />
-                </form>
-
                 <div id=cw>
-                  <budgetform type="Savings" placeholder=50 :salary="salary"></budgetform>
-                  <budgetform type="Expenses" placeholder=45 :salary="salary"></budgetform>
-                  <budgetform type="Wealth" placeholder=5 :salary="salary"></budgetform>
+                  <salaryinput @newsalary="salar = $event"></salaryinput>
+        
+                  <budgetform type="Savings" placeholder=50 :salary="salar"></budgetform>
+                  <budgetform type="Expenses" placeholder=45 :salary="salar"></budgetform>
+                  <budgetform type="Wealth" placeholder=5 :salary="salar"></budgetform>
                 </div>
 
             </div>

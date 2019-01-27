@@ -1,9 +1,30 @@
+var salaryinput = {
+  template: `
+    <div> 
+      <form>
+        <label><h5>Salary: $ </h5></label>
+        <input type="text" placeholder="eg.3000" v-model="salaryin" @input="changesalary"/>
+      </form>
+      <h3>{{salaryin}}</h3>
+    </div>`,
+  data() {
+    return {
+      salaryin: '0'
+    }
+  },
+  methods: {
+    changesalary() {
+      this.$emit('newsalary', this.salaryin)
+    } 
+  }
+}
+
 
 var budgetform = {
   props: {
     type: String,
     placeholder: String,
-    salary: Number
+    salary: String
   },
   template: `
   <div>
@@ -22,7 +43,9 @@ var budgetform = {
   methods: {},
   computed: {
     amountcomputed() {
-      return "Amount: " + ((this.value/100) * this.salary)
+      console.log(this.value)
+      console.log(this.salary)
+      return "Amount: " + ((this.value/100) * parseFloat(this.salary))
     }
   }
 }
@@ -30,12 +53,19 @@ var budgetform = {
 new Vue({
   el: '#cw',
   components: {
-    budgetform
+    budgetform,
+    salaryinput
   },
-  data: {
-    salary: 3000
+  data() {
+    return {
+      salar: 3000
+    }
   }
 })
+
+
+
+
 
 
 
