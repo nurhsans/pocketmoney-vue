@@ -1,8 +1,8 @@
 #calc {
-    border-color: red;
-    border: 1px;
+   background-color: #9BBDF9;
+   width: 450px;
 }
 
-#calc h2 {
-    color: red;
+#calc h5 {
+    display: inline;
 }

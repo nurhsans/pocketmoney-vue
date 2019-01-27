@@ -1,24 +1,41 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Page title</title>
-        <link rel="stylesheet" href="/assets/style.css">
+        <title>Pocket Money - Vue</title>
+        <link rel="stylesheet" href="assets/style.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js"></script>
+        <script src="https://unpkg.com/vue"></script>
     </head>
     <body>
-        <h1>Hello world</h1>
+        <h1>Pocket Money - Vue</h1>
 
+      
         <div id="calc">
             <h2>Calculator</h2>
+            <div id="SalaryInput">
+                <form>
+                    <label><h5>Salary: $ </h5></label>
+                    <input type="text" name="name" placeholder="eg. 3000" />
+                </form>
 
+                <div id=cw>
+                  <budgetform type="Savings" placeholder=50></budgetform>
+                  <budgetform type="Expenses" placeholder=45></budgetform>
+                  <budgetform type="Wealth" placeholder=5></budgetform>
+                </div>
+
+            </div>
+            <div id="Savings"></div>
+            <div id="Expenses"></div>
         </div>
 
-        <div> 
+        <!-- <div> 
             <h2>Graphs</h2>
         </div>
 
         <div> 
             <h2>Days and Debt left</h2>
-        </div>
+        </div> -->
 
 
         <script src="js/index.js"></script>
