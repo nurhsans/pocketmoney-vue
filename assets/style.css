@@ -1,8 +1,13 @@
 #calc {
    background-color: #9BBDF9;
    width: 450px;
+   height: 450px;
 }
 
-#calc h5 {
+#calc  h5 {
     display: inline;
 }
+
+/* #budgets div {
+    float: left;
+} */

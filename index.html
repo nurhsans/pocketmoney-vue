@@ -14,17 +14,22 @@
             <h2>Calculator</h2>
             <div id="SalaryInput">
                 <div id=cw>
-                  <salaryinput @newsalary="salar = $event"></salaryinput>
-        
-                  <budgetform type="Savings" placeholder=50 :salary="salar" initvalue=50></budgetform>
-                  <budgetform type="Expenses" placeholder=45 :salary="salar" initvalue=45></budgetform>
-                  <budgetform type="Wealth" placeholder=5 :salary="salar" initvalue=5></budgetform>
-
+                  <salaryinput @newsalary="salar = $event" ></salaryinput>
+                  <div id="budgets">
+                    <budgetform type="Savings" placeholder=50 :salary="salar" initvalue=50 @newperc="savingspercentage = $event"></budgetform>
+                    <budgetform type="Expenses" placeholder=45 :salary="salar" initvalue=45></budgetform>
+                    <budgetform type="Wealth" placeholder=5 :salary="salar" initvalue=5></budgetform>
+                  </div>
+                    <itemsform type="Personal Savings" placeholder=50 :salary="salar" :bp="savingspercentage" initvalue=50></itemsform>
                 </div>
-
             </div>
-            <div id="Savings"></div>
-            <div id="Expenses"></div>
+            <hr/>
+            <div id="Calulations">
+                <!-- <div id="Savings"> -->
+                    
+                <!-- </div> -->
+                <div id="Expenses"></div>
+            </div>
         </div>
 
         <!-- <div> 
@@ -37,6 +42,7 @@
 
 
         <script src="js/index.js"></script>
+        <script src="js/calculations.js"></script>
     </body>
 
 </html>
