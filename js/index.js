@@ -95,6 +95,7 @@ new Vue({
     return {
       salar: "3000",
       savingspercentage: 50,
+      expensespercentage: 40,
     }
   }
 })

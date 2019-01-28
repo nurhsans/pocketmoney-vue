@@ -17,10 +17,15 @@
                   <salaryinput @newsalary="salar = $event" ></salaryinput>
                   <div id="budgets">
                     <budgetform type="Savings" placeholder=50 :salary="salar" initvalue=50 @newperc="savingspercentage = $event"></budgetform>
-                    <budgetform type="Expenses" placeholder=45 :salary="salar" initvalue=45></budgetform>
+                    <budgetform type="Expenses" placeholder=45 :salary="salar" initvalue=45 @newperc="expensespercentage = $event"></budgetform>
                     <budgetform type="Wealth" placeholder=5 :salary="salar" initvalue=5></budgetform>
                   </div>
+                  <hr/>
                     <itemsform type="Personal Savings" placeholder=50 :salary="salar" :bp="savingspercentage" initvalue=50></itemsform>
+                    <itemsform type="Couple Savings" placeholder=30 :salary="salar" :bp="savingspercentage" initvalue=40></itemsform>
+                    <itemsform type="Emergency Fund" placeholder=50 :salary="salar" :bp="savingspercentage" initvalue=10></itemsform>
+                  <hr/>
+                    <itemsform type="Tuition Fee Loan" placeholder=50 :salary="salar" :bp="expensespercentage" initvalue=50></itemsform>
                 </div>
             </div>
             <hr/>
