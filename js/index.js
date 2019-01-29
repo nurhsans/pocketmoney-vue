@@ -84,18 +84,34 @@ var itemsform = {
   }
 }
 
+var budgetamount = {
+  props: {
+    type: String,
+    salary: String,
+    bp: Number,
+  },
+  template: 
+    `<h2>{{type}} amount: {{budgetcomputed}}</h2>`,
+  computed: {
+    budgetcomputed() {
+      return (parseFloat(this.bp)/100) * parseFloat(this.salary)
+    }
+  }
+} 
+
 new Vue({
   el: '#cw',
   components: {
     salaryinput,
     budgetform,
-    itemsform
+    itemsform,
+    budgetamount
   },
   data() {
     return {
       salar: "3000",
       savingspercentage: 50,
-      expensespercentage: 40,
+      expensespercentage: 45,
     }
   }
 })

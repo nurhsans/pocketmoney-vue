@@ -21,10 +21,12 @@
                     <budgetform type="Wealth" placeholder=5 :salary="salar" initvalue=5></budgetform>
                   </div>
                   <hr/>
+                  <budgetamount :salary="salar" :bp="savingspercentage"></budgetamount>
                     <itemsform type="Personal Savings" placeholder=50 :salary="salar" :bp="savingspercentage" initvalue=50></itemsform>
                     <itemsform type="Couple Savings" placeholder=30 :salary="salar" :bp="savingspercentage" initvalue=40></itemsform>
                     <itemsform type="Emergency Fund" placeholder=50 :salary="salar" :bp="savingspercentage" initvalue=10></itemsform>
                   <hr/>
+                  <budgetamount :salary="salar" :bp="expensespercentage"></budgetamount>
                     <itemsform type="Tuition Fee Loan" placeholder=50 :salary="salar" :bp="expensespercentage" initvalue=50></itemsform>
                 </div>
             </div>
