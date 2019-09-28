@@ -1,45 +1,99 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Pocket Money - Vue</title>
-        <link rel="stylesheet" href="assets/style.css">
-        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js"></script>
-        <script src="https://unpkg.com/vue"></script>
-    </head>
-    <body>
-        <h1>Pocket Money - Vue</h1>
 
-      
-        <div id="calc">
-            <h2>Calculator</h2>
-            <div id="SalaryInput">
-                <div id=cw>
-                  <salaryinput @newsalary="salar = $event" ></salaryinput>
-                  <div id="budgets">
-                    <budgetform type="Savings" placeholder=50 :salary="salar" initvalue=50 @newperc="savingspercentage = $event"></budgetform>
-                    <budgetform type="Expenses" placeholder=45 :salary="salar" initvalue=45 @newperc="expensespercentage = $event"></budgetform>
-                    <budgetform type="Wealth" placeholder=5 :salary="salar" initvalue=5></budgetform>
-                  </div>
-                  <hr/>
-                  <budgetamount :salary="salar" :bp="savingspercentage"></budgetamount>
-                    <itemsform type="Personal Savings" placeholder=50 :salary="salar" :bp="savingspercentage" initvalue=50></itemsform>
-                    <itemsform type="Couple Savings" placeholder=30 :salary="salar" :bp="savingspercentage" initvalue=40></itemsform>
-                    <itemsform type="Emergency Fund" placeholder=50 :salary="salar" :bp="savingspercentage" initvalue=10></itemsform>
-                  <hr/>
-                  <budgetamount :salary="salar" :bp="expensespercentage"></budgetamount>
-                    <itemsform type="Tuition Fee Loan" placeholder=50 :salary="salar" :bp="expensespercentage" initvalue=50></itemsform>
-                </div>
-            </div>
-            <hr/>
-            <div id="Calulations">
-                <!-- <div id="Savings"> -->
-                    
-                <!-- </div> -->
-                <div id="Expenses"></div>
+<head>
+    <title>Pocket Money - Vue</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 header">
+                <h1>Pocket Money - Vue</h1>
             </div>
         </div>
+    </div>
 
-        <!-- <div> 
+
+    <div class="container">
+        <div class="row">
+            <!-- <div class="col-6">
+                <div id="calc">
+                    <h2>Calculator</h2>
+                    <div id="SalaryInput">
+                        <div id=cw>
+                            <salaryinput @newsalary="salar = $event"></salaryinput>
+                            <div id="budgets">
+                                <budgetform type="Savings" placeholder=50 :salary="salar" initvalue=50
+                                    @newperc="savingspercentage = $event"></budgetform>
+                                <budgetform type="Expenses" placeholder=45 :salary="salar" initvalue=45
+                                    @newperc="expensespercentage = $event"></budgetform>
+                                <budgetform type="Wealth" placeholder=5 :salary="salar" initvalue=5></budgetform>
+                            </div>
+                            <hr />
+                            <budgetamount :salary="salar" :bp="savingspercentage"></budgetamount>
+                            <itemsform type="Personal Savings" placeholder=50 :salary="salar" :bp="savingspercentage"
+                                initvalue=50></itemsform>
+                            <itemsform type="Couple Savings" placeholder=30 :salary="salar" :bp="savingspercentage"
+                                initvalue=40></itemsform>
+                            <itemsform type="Emergency Fund" placeholder=50 :salary="salar" :bp="savingspercentage"
+                                initvalue=10></itemsform>
+                            <hr />
+                            <budgetamount :salary="salar" :bp="expensespercentage"></budgetamount>
+                            <itemsform type="Tuition Fee Loan" placeholder=50 :salary="salar" :bp="expensespercentage"
+                                initvalue=50></itemsform>
+                        </div>
+                    </div>
+                    <hr />
+                    <div id="Calulations">
+                        <!-- <div id="Savings"> -->
+
+                        <!-- </div> -->
+                        <!-- <div id="Expenses"></div> -->
+                    <!-- </div>
+                </div>
+
+            </div> --> 
+
+            <div id="newCalculator" class="col-4">
+                <div class="input-group input-group-lg">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-lg">Total Amount: $</span>
+                    </div>
+                    <input v-model="salary" type="text" class="form-control">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Savings %</span>
+                    </div>
+                    <input v-model="savPerc" type="text" class="form-control">
+                    <input v-model.lazy=savingsBudget type="text" class="form-control">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Expenses %</span>
+                    </div>
+                    <input v-model="expPerc" type="text" class="form-control">
+                    <input v-model.lazy="expensesBudget" type="text" class="form-control">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Wealth %</span>
+                    </div>
+                    <input v-model="wealthPerc" type="text" class="form-control">
+                    <input v-model.lazy="wealthBudget" type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- <div> 
             <h2>Graphs</h2>
         </div>
 
@@ -47,9 +101,18 @@
             <h2>Days and Debt left</h2>
         </div> -->
 
-
-        <script src="js/index.js"></script>
-        <script src="js/calculations.js"></script>
-    </body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="js/index.js"></script>
+    <script src="js/test.js"></script>
+    <!-- <script src="js/calculations.js"></script> -->
+</body>
 
 </html>

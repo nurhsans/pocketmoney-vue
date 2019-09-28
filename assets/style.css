@@ -1,11 +1,16 @@
 #calc {
-   background-color: #9BBDF9;
+   /* background-color: #9BBDF9; */
    width: 450px;
    height: 450px;
 }
 
 #calc  h5 {
     display: inline;
+}
+
+.header h1 {
+    text-align: center;
+    padding: 25px 0;
 }
 
 /* #budgets div {

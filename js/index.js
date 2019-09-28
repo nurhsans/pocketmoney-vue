@@ -41,8 +41,8 @@ var budgetform = {
   },
   computed: {
     amountcomputed() {
-      console.log(this.value)
-      console.log(this.salary)
+      // console.log("budgetform value: " +this.value)
+      // console.log("budgetform salary: " +this.salary)
       return "Amount: " + ((parseFloat(this.value)/100) * parseFloat(this.salary))
     }
   },
@@ -76,9 +76,9 @@ var itemsform = {
   },
   computed: {
   itemcomputed() {
-      console.log(this.value)
-      console.log(this.salary)
-      console.log("budget: " + (parseFloat(this.bp)/100) * parseFloat(this.salary))
+      // console.log("itemsform value: " + this.value)
+      // console.log("itemsform salary: " + this.salary)
+      // console.log("itemsform budget: " + (parseFloat(this.bp)/100) * parseFloat(this.salary))
       return "Amount: " + ((parseFloat(this.bp)/100) * parseFloat(this.salary)* parseFloat(this.value)/100)
       }
   }
@@ -94,6 +94,7 @@ var budgetamount = {
     `<h2>{{type}} amount: {{budgetcomputed}}</h2>`,
   computed: {
     budgetcomputed() {
+      // console.log("budgetamt bp: " + this.bp)
       return (parseFloat(this.bp)/100) * parseFloat(this.salary)
     }
   }
