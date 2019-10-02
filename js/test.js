@@ -86,9 +86,9 @@ new Vue({
         remainingExpenses: function() {
              if (this.expensesList.length != 0) {
                 let totalItemAmts = this.expensesList.reduce((a, b) => {
-                    return a.itemAmt + b.itemAmt
-                }).itemAmt
-                return this.expensesAmt - totalItemAmts
+                    return { itemAmt:a.itemAmt + b.itemAmt }
+                })
+                return this.expensesAmt - totalItemAmts.itemAmt
             } else return 0
         }
     },
