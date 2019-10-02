@@ -61,37 +61,37 @@
             </div> -->
         <div id="newCalculator">
             <div class="row">
-                <div class="col-md-12 col-lg-4">
+                <div class="col-md-12 col-lg-5">
                     <div class="input-group input-group-lg">
                         <div class="input-group-prepend">
                             <span class="bg-warning text-dark input-group-text" id="inputGroup-sizing-lg">Total Amount: $</span>
                         </div>
                         <input v-model="salary" type="text" class="form-control">
                     </div>
-                    <div class="input-group mb-3">
+                    <div class="input-group input-group-lg">
                         <div class="input-group-prepend">
-                            <span class="bg-success text-light input-group-text" id="inputGroup-sizing-default">Savings %</span>
+                            <span class="bg-success text-light input-group-text" id="inputGroup-sizing-lg">Savings %</span>
                         </div>
                         <input v-model="savPerc" type="text" class="form-control">
                         <input v-model=savingsBudget type="text" class="form-control">
                     </div>
-                    <div class="input-group mb-3">
+                    <div class="input-group input-group-lg">
                         <div class="input-group-prepend">
-                            <span class="bg-danger text-light input-group-text" id="inputGroup-sizing-default">Expenses %</span>
+                            <span class="bg-danger text-light input-group-text" id="inputGroup-sizing-lg">Expenses %</span>
                         </div>
                         <input v-model="expPerc" type="text" class="form-control">
                         <input v-model="expensesBudget" type="text" class="form-control">
                     </div>
-                    <div class="input-group mb-3">
+                    <div class="input-group input-group-lg">
                         <div class="input-group-prepend">
-                            <span class="input-group-text bg-primary text-light" id="inputGroup-sizing-default">Wealth %</span>
+                            <span class="input-group-text bg-primary text-light" id="inputGroup-sizing-lg">Wealth %</span>
                         </div>
                         <input v-model="wealthPerc" type="text" class="form-control">
                         <input v-model="wealthBudget" type="text" class="form-control">
                     </div>
                 </div>
 
-                <div class="col-md-12 col-lg-8">
+                <div class="col-md-12 col-lg-7">
                     <div class="input-group">
                         <input v-model="savingsListItem" type="text" class="form-control" v-on:keyup.enter="addBudgetComponent('savingsItem')">
                         <div class="input-group-append">
@@ -112,11 +112,11 @@
                     </div>
                 </div>
 
-                <div class="col-md-4 col-lg-4"></div>
+                <div class="col-md-4 col-lg-5"></div>
 
 
 
-                <div class="col-md-12 col-lg-8">
+                <div class="col-md-12 col-lg-7">
                     <div class="input-group">
                         <input v-model="expensesListItem" type="text" class="form-control" v-on:keyup.enter="addBudgetComponent('expensesItem')">
                         <div class="input-group-append">

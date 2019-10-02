@@ -4,7 +4,7 @@ var budgetamount = {
         totalbudget: 0
     },
     template:
-        ` <div class="input-group">
+        ` <div class="input-group input-group-lg">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">{{item.name}} %</span>
             </div>
