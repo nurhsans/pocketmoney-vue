@@ -9,6 +9,9 @@ var budgetamount = {
                 <span class="input-group-text" id="inputGroup-sizing-default">{{item.name}} %</span>
             </div>
       <input type="text" v-model="item.itemPercentage" class="form-control">
+      <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">$</span>
+            </div>
       <input type="text" v-model.lazy="testItemMethod" class="form-control">
       <button type="button" class="btn btn-outline-secondary bg-secondary text-light"  @click="$emit('removethis')">Remove</button>
     </div>`,
