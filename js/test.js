@@ -1,5 +1,35 @@
+var budgetamount = {
+    props: {
+        item: {},
+        totalbudget: 0
+    },
+    template:
+        ` <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">{{item.name}} %</span>
+            </div>
+      <input type="text" v-model="item.itemPercentage" class="form-control">
+      <input type="text" v-model.lazy="testItemMethod" class="form-control">
+    </div>`,
+    computed: {
+        testItemMethod: {
+            get: function () {
+                this.item.itemAmt = (this.totalbudget * this.item.itemPercentage) / 100
+                return this.item.itemAmt
+            },
+            set: function (input) {
+                this.item.itemAmt = parseFloat(input.match(/[\d\.\d]+/i))
+                this.item.itemPercentage = (this.item.itemAmt / this.totalBudget * 100)
+            }
+        }
+    }
+}
+
 new Vue({
     el: '#newCalculator',
+    components: {
+        budgetamount
+    },
     data: {
         salary: 3000,
         savPerc: 50.00,
@@ -7,7 +37,11 @@ new Vue({
         wealthPerc: 5.00,
         savingsAmt: 0,
         expensesAmt: 0,
-        wealthAmt: 0
+        wealthAmt: 0,
+        savingsListItem: "",
+        expensesListItem: "",
+        savingsList: [],
+        expensesList: [],
     },
     computed: {
         savingsBudget: {
@@ -37,8 +71,47 @@ new Vue({
             },
             set: function (input) {
                 this.wealthAmt = parseFloat(input.match(/[\d\.\d]+/i)[0])
-                this.wealthPerc = ((this.wealthAmt/ this.salary) * 100).toFixed(2)
+                this.wealthPerc = ((this.wealthAmt / this.salary) * 100).toFixed(2)
             },
+        },
+        remainingSavings: function() {
+            if (this.savingsList.length != 0) {
+                let totalItemAmts = this.savingsList.reduce((a, b) => {
+                    return a.itemAmt + b.itemAmt
+                }).itemAmt
+                return this.savingsAmt - totalItemAmts
+            }
+            else return 0
+        },
+        remainingExpenses: function() {
+             if (this.expensesList.length != 0) {
+                let totalItemAmts = this.expensesList.reduce((a, b) => {
+                    return a.itemAmt + b.itemAmt
+                }).itemAmt
+                return this.expensesAmt - totalItemAmts
+            } else return 0
+        }
+    },
+    methods: {
+        addBudgetComponent: function (componentType) {
+            var newItem = {
+                name: "",
+                itemPercentage: 10,
+                itemAmt: 10
+            }
+            if (componentType == "savingsItem") {
+                newItem.name = this.savingsListItem
+                this.savingsList.push(newItem)
+                this.savingsListItem = ""
+            } else {
+                newItem.name = this.expensesListItem
+                this.expensesList.push(newItem)
+                this.expensesListItem = ""
+            }
         }
     }
 })
+
+
+
+
