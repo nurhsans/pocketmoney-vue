@@ -107,7 +107,7 @@
 
                     <div>
                         <div v-for="item in savingsList" class="input-group mb-3">
-                           <budgetamount :item=item :totalbudget=savingsAmt></budgetamount> 
+                           <budgetamount :item=item :totalbudget=savingsAmt @removethis="parentRemoveThisSavings(item)"></budgetamount> 
                         </div>
                     </div>
                 </div>
@@ -132,7 +132,7 @@
 
                     <div>
                         <div v-for="item in expensesList" class="input-group mb-3">
-                           <budgetamount :item=item :totalbudget=expensesAmt></budgetamount> 
+                           <budgetamount :item=item :totalbudget=expensesAmt @removethis="parentRemoveThisExpenses(item)"></budgetamount> 
                         </div>
                     </div>
                 </div>

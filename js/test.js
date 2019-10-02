@@ -10,6 +10,7 @@ var budgetamount = {
             </div>
       <input type="text" v-model="item.itemPercentage" class="form-control">
       <input type="text" v-model.lazy="testItemMethod" class="form-control">
+      <button type="button" class="btn btn-outline-secondary bg-secondary text-light"  @click="$emit('removethis')">Remove</button>
     </div>`,
     computed: {
         testItemMethod: {
@@ -74,7 +75,7 @@ new Vue({
                 this.wealthPerc = ((this.wealthAmt / this.salary) * 100)
             },
         },
-        remainingSavings: function() {
+        remainingSavings: function () {
             if (this.savingsList.length != 0) {
                 let totalItemAmts = this.savingsList.reduce((a, b) => {
                     return { itemAmt: a.itemAmt + b.itemAmt }
@@ -83,10 +84,10 @@ new Vue({
             }
             else return 0
         },
-        remainingExpenses: function() {
-             if (this.expensesList.length != 0) {
+        remainingExpenses: function () {
+            if (this.expensesList.length != 0) {
                 let totalItemAmts = this.expensesList.reduce((a, b) => {
-                    return { itemAmt:a.itemAmt + b.itemAmt }
+                    return { itemAmt: a.itemAmt + b.itemAmt }
                 })
                 return this.expensesAmt - totalItemAmts.itemAmt
             } else return 0
@@ -96,6 +97,7 @@ new Vue({
         addBudgetComponent: function (componentType) {
             var newItem = {
                 name: "",
+                type: "",
                 itemPercentage: 10,
                 itemAmt: 10
             }
@@ -108,6 +110,14 @@ new Vue({
                 this.expensesList.push(newItem)
                 this.expensesListItem = ""
             }
+        },
+        parentRemoveThisSavings: function (thisItem) {
+            console.log("thisItemName " + thisItem.name)
+            this.savingsList = this.savingsList.filter(item => item.name != thisItem.name)
+        },
+        parentRemoveThisExpenses: function (thisItem) {
+            console.log("thisItemName " + thisItem.name)
+            this.expensesList = this.expensesList.filter(item => item.name != thisItem.name)
         }
     }
 })
