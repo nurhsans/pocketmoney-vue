@@ -77,9 +77,9 @@ new Vue({
         remainingSavings: function() {
             if (this.savingsList.length != 0) {
                 let totalItemAmts = this.savingsList.reduce((a, b) => {
-                    return a.itemAmt + b.itemAmt
-                }).itemAmt
-                return this.savingsAmt - totalItemAmts
+                    return { itemAmt: a.itemAmt + b.itemAmt }
+                })
+                return this.savingsAmt - totalItemAmts.itemAmt
             }
             else return 0
         },
