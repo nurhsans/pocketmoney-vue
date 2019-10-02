@@ -73,21 +73,21 @@
                             <span class="bg-success text-light input-group-text" id="inputGroup-sizing-lg">Savings %</span>
                         </div>
                         <input v-model="savPerc" type="text" class="form-control">
-                        <input v-model=savingsBudget type="text" class="form-control">
+                        <input v-model.lazy=savingsBudget type="text" class="form-control">
                     </div>
                     <div class="input-group input-group-lg">
                         <div class="input-group-prepend">
                             <span class="bg-danger text-light input-group-text" id="inputGroup-sizing-lg">Expenses %</span>
                         </div>
                         <input v-model="expPerc" type="text" class="form-control">
-                        <input v-model="expensesBudget" type="text" class="form-control">
+                        <input v-model.lazy="expensesBudget" type="text" class="form-control">
                     </div>
                     <div class="input-group input-group-lg">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-primary text-light" id="inputGroup-sizing-lg">Wealth %</span>
                         </div>
                         <input v-model="wealthPerc" type="text" class="form-control">
-                        <input v-model="wealthBudget" type="text" class="form-control">
+                        <input v-model.lazy="wealthBudget" type="text" class="form-control">
                     </div>
                 </div>
 

@@ -19,7 +19,7 @@ var budgetamount = {
             },
             set: function (input) {
                 this.item.itemAmt = parseFloat(input.match(/[\d\.\d]+/i))
-                this.item.itemPercentage = (this.item.itemAmt / this.totalBudget * 100)
+                this.item.itemPercentage = (this.item.itemAmt / this.totalbudget * 100)
             }
         }
     }
@@ -51,7 +51,7 @@ new Vue({
             },
             set: function (input) {
                 this.savingsAmt = parseFloat(input.match(/[\d\.\d]+/i)[0])
-                this.savPerc = ((this.savingsAmt / this.salary) * 100).toFixed(2)
+                this.savPerc = ((this.savingsAmt / this.salary) * 100)
             }
         },
         expensesBudget: {
@@ -61,7 +61,7 @@ new Vue({
             },
             set: function (input) {
                 this.expensesAmt = parseFloat(input.match(/[\d\.\d]+/i)[0])
-                this.expPerc = ((this.expensesAmt / this.salary) * 100).toFixed(2)
+                this.expPerc = ((this.expensesAmt / this.salary) * 100)
             }
         },
         wealthBudget: {
@@ -71,7 +71,7 @@ new Vue({
             },
             set: function (input) {
                 this.wealthAmt = parseFloat(input.match(/[\d\.\d]+/i)[0])
-                this.wealthPerc = ((this.wealthAmt / this.salary) * 100).toFixed(2)
+                this.wealthPerc = ((this.wealthAmt / this.salary) * 100)
             },
         },
         remainingSavings: function() {
