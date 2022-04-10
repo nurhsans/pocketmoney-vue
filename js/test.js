@@ -218,7 +218,8 @@ var app = new Vue({
           hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
           hiddenElement.target = '_blank';
 
-          hiddenElement.download = 'PocketMoney.csv';
+          var date = new Date().toLocaleString()
+          hiddenElement.download = 'PocketMoney_'+ date +'.csv';
           hiddenElement.click();
         }
     }
