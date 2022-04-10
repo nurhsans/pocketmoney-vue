@@ -10,23 +10,33 @@ var budgetamount = {
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">{{item.name}} %</span>
             </div>
-      <input type="text" v-model="item.itemPercentage" class="form-control">
+      <input type="number" step="0.01" v-model="item.itemPercentage" class="form-control">
       <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">$</span>
             </div>
-      <input type="text" v-model.lazy="testItemMethod" class="form-control">
+      <input type="number" step="0.01" v-model.lazy="testItemMethod" class="form-control">
+      <button type="button" class="btn btn-outline-secondary bg-info text-light"  @click="$emit('lockthis')">Lock Value</button>
+      <button type="button" class="btn btn-outline-secondary bg-warning text-light"  @click="$emit('unlockthis')">Unlock Value</button>
       <button type="button" class="btn btn-outline-secondary bg-secondary text-light"  @click="$emit('removethis')">Remove</button>
     </div>`,
     computed: {
         testItemMethod: {
             get: function () {
+              if (this.item.itemLock === false) {
+                console.log("ssaasa " + this.item.itemLock)
                 this.item.itemAmt = (this.totalbudget * this.item.itemPercentage) / 100
                 return this.item.itemAmt
+              }
+              else {
+                return this.item.itemAmt
+              }
             },
             set: function (input) {
+              if (this.item.itemLock === false) {
                 this.item.itemAmt = parseFloat(input.match(/[\d\.\d]+/i))
                 this.item.itemPercentage = (this.item.itemAmt / this.totalbudget * 100)
             }
+          }
         }
     }
 }
@@ -48,11 +58,13 @@ var app = new Vue({
         expensesListItem: "",
         savingsList: [
             {name: "Personal Savings",
-            itemPercentage: 33.333,
-            itemAmt: 0},
+            itemPercentage: 35,
+            itemAmt: 0,
+          itemLock:false},
             {name: "House",
-            itemPercentage: 53.333,
-            itemAmt: 0},
+            itemPercentage: 55,
+            itemAmt: 10,
+          itemLock:false},
             // {name: "Bike",
             // itemPercentage: 10,
             // itemAmt: 0},
@@ -61,7 +73,8 @@ var app = new Vue({
             // itemAmt: 0},
             {name: "Emergency Fund",
             itemPercentage: 0,
-            itemAmt: 0},
+            itemAmt: 0,
+          itemLock:false},
         ],
         expensesList: [
             {name: "Phone",
@@ -114,7 +127,7 @@ var app = new Vue({
                 let totalItemAmts = this.savingsList.reduce((a, b) => {
                     return { itemAmt: a.itemAmt + b.itemAmt }
                 })
-                return this.savingsAmt - totalItemAmts.itemAmt
+                return (this.savingsAmt - totalItemAmts.itemAmt).toFixed(2)
             }
             else return 0
         },
@@ -123,7 +136,7 @@ var app = new Vue({
                 let totalItemAmts = this.expensesList.reduce((a, b) => {
                     return { itemAmt: a.itemAmt + b.itemAmt }
                 })
-                return this.expensesAmt - totalItemAmts.itemAmt
+                return (this.expensesAmt - totalItemAmts.itemAmt).toFixed(2)
             } else return 0
         }
     },
@@ -133,7 +146,8 @@ var app = new Vue({
                 name: "",
                 type: "",
                 itemPercentage: 10,
-                itemAmt: 10
+                itemAmt: 10,
+                itemLock:false
             }
             if (componentType == "savingsItem") {
                 newItem.name = this.savingsListItem
@@ -148,6 +162,14 @@ var app = new Vue({
         parentRemoveThisSavings: function (thisItem) {
             console.log("thisItemName " + thisItem.name)
             this.savingsList = this.savingsList.filter(item => item.name != thisItem.name)
+        },
+        parentLockThisSavings: function (thisItem) {
+            console.log("thisItemName " + thisItem.name + " " + thisItem.itemLock)
+            thisItem.itemLock = true;
+        },
+        parentUnlockThisSavings: function (thisItem) {
+            console.log("thisItemName " + thisItem.name + " " + thisItem.itemLock)
+            thisItem.itemLock = false;
         },
         parentRemoveThisExpenses: function (thisItem) {
             console.log("thisItemName " + thisItem.name)

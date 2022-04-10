@@ -90,7 +90,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-12 col-lg-7">
+                <div class="col-md-12 col-lg-12">
                     <div class="input-group">
                         <input v-model="savingsListItem" type="text" class="form-control" v-on:keyup.enter="addBudgetComponent('savingsItem')">
                         <div class="input-group-append">
@@ -107,7 +107,8 @@
 
                     <div>
                         <div v-for="item in savingsList" class="input-group mb-3">
-                           <budgetamount :item=item :totalbudget=savingsAmt @removethis="parentRemoveThisSavings(item)"></budgetamount>
+                           <budgetamount :item=item :totalbudget=savingsAmt @removethis="parentRemoveThisSavings(item)"
+                            @lockthis="parentLockThisSavings(item)" @unlockthis="parentUnlockThisSavings(item)"></budgetamount>
                         </div>
                     </div>
                 </div>
@@ -117,7 +118,7 @@
 
 
 
-                <div class="col-md-12 col-lg-7">
+                <div class="col-md-12 col-lg-12">
                     <div class="input-group">
                         <input v-model="expensesListItem" type="text" class="form-control" v-on:keyup.enter="addBudgetComponent('expensesItem')">
                         <div class="input-group-append">
