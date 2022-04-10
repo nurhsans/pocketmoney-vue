@@ -15,15 +15,14 @@ var budgetamount = {
                 <span class="input-group-text" id="inputGroup-sizing-default">$</span>
             </div>
       <input type="number" step="0.01" v-model.lazy="testItemMethod" class="form-control">
-      <button type="button" class="btn btn-outline-secondary bg-info text-light"  @click="$emit('lockthis')">Lock Value</button>
-      <button type="button" class="btn btn-outline-secondary bg-warning text-light"  @click="$emit('unlockthis')">Unlock Value</button>
+      <button id="lockbtn" type="button" class="btn btn-outline-secondary bg-info text-light"  @click="$emit('lockthis')">Lock</button>
+      <button type="button" class="btn btn-outline-secondary bg-warning text-light"  @click="$emit('unlockthis')">Unlock</button>
       <button type="button" class="btn btn-outline-secondary bg-secondary text-light"  @click="$emit('removethis')">Remove</button>
     </div>`,
     computed: {
         testItemMethod: {
             get: function () {
               if (this.item.itemLock === false) {
-                console.log("ssaasa " + this.item.itemLock)
                 this.item.itemAmt = (this.totalbudget * this.item.itemPercentage) / 100
                 return this.item.itemAmt
               }
@@ -79,13 +78,15 @@ var app = new Vue({
         expensesList: [
             {name: "Phone",
             itemPercentage: 3.26,
-            itemAmt: 0},
+            itemAmt: 0,
+          itemLock:false},
             // {name: "GA Loan",
             // itemPercentage: 40,
             // itemAmt: 0},
             {name: "Give Parents",
             itemPercentage: 16.666,
-            itemAmt: 0},
+            itemAmt: 0,
+          itemLock:false},
             // {name: "Gym",
             // itemPercentage: 5.2666,
             // itemAmt: 0}
@@ -163,13 +164,19 @@ var app = new Vue({
             console.log("thisItemName " + thisItem.name)
             this.savingsList = this.savingsList.filter(item => item.name != thisItem.name)
         },
-        parentLockThisSavings: function (thisItem) {
+        parentLockThisItem: function (thisItem) {
             console.log("thisItemName " + thisItem.name + " " + thisItem.itemLock)
+            if (!thisItem.itemLock) {
+            thisItem.name = thisItem.name + " (locked)"
             thisItem.itemLock = true;
+          }
         },
-        parentUnlockThisSavings: function (thisItem) {
+        parentUnlockThisItem: function (thisItem) {
             console.log("thisItemName " + thisItem.name + " " + thisItem.itemLock)
+            if(thisItem.itemLock) {
+            thisItem.name = thisItem.name.replace(" (locked)", "")
             thisItem.itemLock = false;
+          }
         },
         parentRemoveThisExpenses: function (thisItem) {
             console.log("thisItemName " + thisItem.name)

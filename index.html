@@ -15,6 +15,13 @@
             <div class="col-12 header">
                 <h1>Pocket Money - Vue</h1>
             </div>
+            <div class="col-12 text-center mx-auto">
+              <p>Hi users! Firstly, thanks for using this calculator! Here are some new features that has been added!
+              <p>
+                <b>"Lock" feature</b> - You can lock the cash amount so that when you change the Total Savings or Total Expenses, this amount does not change.<br />
+                <b>"Unlock" feature</b> - When you "Unlock", the $ value will change to the new (Total Savings x Item percentage).
+              </p>
+            </div>
         </div>
     </div>
 
@@ -108,7 +115,7 @@
                     <div>
                         <div v-for="item in savingsList" class="input-group mb-3">
                            <budgetamount :item=item :totalbudget=savingsAmt @removethis="parentRemoveThisSavings(item)"
-                            @lockthis="parentLockThisSavings(item)" @unlockthis="parentUnlockThisSavings(item)"></budgetamount>
+                            @lockthis="parentLockThisItem(item)" @unlockthis="parentUnlockThisItem(item)"></budgetamount>
                         </div>
                     </div>
                 </div>
@@ -134,7 +141,8 @@
 
                     <div>
                         <div v-for="item in expensesList" class="input-group mb-3">
-                           <budgetamount :item=item :totalbudget=expensesAmt @removethis="parentRemoveThisExpenses(item)"></budgetamount>
+                           <budgetamount :item=item :totalbudget=expensesAmt @removethis="parentRemoveThisExpenses(item)"
+                           @lockthis="parentLockThisItem(item)" @unlockthis="parentUnlockThisItem(item)"></budgetamount>
                         </div>
                     </div>
                     </div>
