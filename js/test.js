@@ -181,6 +181,45 @@ var app = new Vue({
         parentRemoveThisExpenses: function (thisItem) {
             console.log("thisItemName " + thisItem.name)
             this.expensesList = this.expensesList.filter(item => item.name != thisItem.name)
+        },
+        saveAllDataToCSV: function () {
+          var csvFileData = [];
+
+          var main = new Array("Total Amount","",this.salary)
+          var m = new Array("Savings", this.savPerc, this.savingsAmt)
+          var e = new Array("Expenses", this.expPerc, this.expensesAmt)
+          var w = new Array("Wealth", this.wealthPerc, this.wealthAmt)
+
+          csvFileData.push(main)
+          csvFileData.push(m)
+          csvFileData.push(e)
+          csvFileData.push(w)
+          csvFileData.push(new Array())
+
+          this.savingsList.forEach(function(e){
+            var ar = new Array(e.name, e.itemPercentage, e.itemAmt)
+            csvFileData.push(ar)
+          })
+
+          csvFileData.push(new Array())
+          this.expensesList.forEach(function(e) {
+            var ar = new Array(e.name, e.itemPercentage, e.itemAmt)
+            csvFileData.push(ar)
+          })
+
+          var csv = 'Item,Percentage,Amout\n';
+
+          csvFileData.forEach(function(row) {
+                  csv += row.join(',');
+                  csv += "\n";
+          });
+
+          var hiddenElement = document.createElement('a');
+          hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+          hiddenElement.target = '_blank';
+
+          hiddenElement.download = 'PocketMoney.csv';
+          hiddenElement.click();
         }
     }
 })

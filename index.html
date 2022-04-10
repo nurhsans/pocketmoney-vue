@@ -19,7 +19,8 @@
               <p>Hi users! Firstly, thanks for using this calculator! Here are some new features that has been added!
               <p>
                 <b>"Lock" feature</b> - You can lock the cash amount so that when you change the Total Savings or Total Expenses, this amount does not change.<br />
-                <b>"Unlock" feature</b> - When you "Unlock", the $ value will change to the new (Total Savings x Item percentage).
+                <b>"Unlock" feature</b> - When you "Unlock", the $ value will change to the new (Total Savings x Item percentage).<br />
+                <b>"Download Results" feature</b> - When you click "Download CSV", your data will be saved as an excel csv file that you can then use later!
               </p>
             </div>
         </div>
@@ -27,44 +28,6 @@
 
 
     <div class="container">
-
-        <!-- <div class="col-6">
-                <div id="calc">
-                    <h2>Calculator</h2>
-                    <div id="SalaryInput">
-                        <div id=cw>
-                            <salaryinput @newsalary="salar = $event"></salaryinput>
-                            <div id="budgets">
-                                <budgetform type="Savings" placeholder=50 :salary="salar" initvalue=50
-                                    @newperc="savingspercentage = $event"></budgetform>
-                                <budgetform type="Expenses" placeholder=45 :salary="salar" initvalue=45
-                                    @newperc="expensespercentage = $event"></budgetform>
-                                <budgetform type="Wealth" placeholder=5 :salary="salar" initvalue=5></budgetform>
-                            </div>
-                            <hr />
-                            <budgetamount :salary="salar" :bp="savingspercentage"></budgetamount>
-                            <itemsform type="Personal Savings" placeholder=50 :salary="salar" :bp="savingspercentage"
-                                initvalue=50></itemsform>
-                            <itemsform type="Couple Savings" placeholder=30 :salary="salar" :bp="savingspercentage"
-                                initvalue=40></itemsform>
-                            <itemsform type="Emergency Fund" placeholder=50 :salary="salar" :bp="savingspercentage"
-                                initvalue=10></itemsform>
-                            <hr />
-                            <budgetamount :salary="salar" :bp="expensespercentage"></budgetamount>
-                            <itemsform type="Tuition Fee Loan" placeholder=50 :salary="salar" :bp="expensespercentage"
-                                initvalue=50></itemsform>
-                        </div>
-                    </div>
-                    <hr />
-                    <div id="Calulations">
-                        <!-- <div id="Savings"> -->
-
-        <!-- </div> -->
-        <!-- <div id="Expenses"></div> -->
-        <!-- </div>
-                </div>
-
-            </div> -->
         <div id="newCalculator">
             <div class="row">
                 <div class="col-md-12 col-lg-5 pb-5">
@@ -148,6 +111,9 @@
                     </div>
                 </div>
 
+                <div class="col-md-12 col-lg-12">
+                <button type="button" class="btn btn-outline-secondary bg-dark text-light"  @click="saveAllDataToCSV">Download Results</button>
+                  </div>
 
 
 
@@ -176,6 +142,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <!-- <script src="js/index.js"></script> -->
+    <script lang="javascript" src="dist/xlsx.full.min.js"></script>
     <script src="js/test.js"></script>
     <!-- <script src="js/calculations.js"></script> -->
 </body>

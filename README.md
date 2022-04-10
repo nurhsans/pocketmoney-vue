@@ -17,4 +17,8 @@ New features to develop:
 - Lock some values
 
 Fixes to implement
-- Percentage and $$ should have only 2 decimal points. 
+- Percentage and $$ should have only 2 decimal points.
+
+PV005
+New features to develop:
+- save data in CSV - download-able - Learnt from https://www.javatpoint.com/oprweb/test.jsp?filename=javascript-create-and-download-csv-file1
