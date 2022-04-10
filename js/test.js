@@ -1,3 +1,5 @@
+// import Vue from 'vue'
+
 var budgetamount = {
     props: {
         item: {},
@@ -29,13 +31,13 @@ var budgetamount = {
     }
 }
 
-new Vue({
+var app = new Vue({
     el: '#newCalculator',
     components: {
         budgetamount
     },
     data: {
-        salary: 3000,
+        salary: 4000,
         savPerc: 50.00,
         expPerc: 50.00,
         wealthPerc: 0.00,
@@ -153,7 +155,3 @@ new Vue({
         }
     }
 })
-
-
-
-
